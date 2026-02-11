@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <left>
+                  <AnchorPane prefHeight="667.0" prefWidth="238.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="-19.0" prefHeight="85.0" prefWidth="220.0" AnchorPane.leftAnchor="-19.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label layoutX="55.0" layoutY="16.0" prefHeight="41.0" prefWidth="164.0" styleClass="gradient_yellow" stylesheets="@style/text.css" text="Lecturer's page" textAlignment="CENTER" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="16.0">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <styleClass>
+                              <String fx:value="header-v2" />
+                              <String fx:value="radius" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                           <stylesheets>
+                              <URL value="@style/layout.css" />
+                              <URL value="@style/button.css" />
+                           </stylesheets>
+                        </AnchorPane>
+                        <Label layoutX="12.0" layoutY="110.0" text="Welcome, " AnchorPane.topAnchor="111.0" />
+                        <Label layoutX="72.0" layoutY="104.0" text="Teacher" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="104.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="21.0" layoutY="334.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="196.0" stylesheets="@style/layout.css" text="View Time table" AnchorPane.topAnchor="334.0">
+                           <styleClass>
+                              <String fx:value="radius" />
+                              <String fx:value="button-with-shadow-surround-yellow" />
+                           </styleClass>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="21.0" layoutY="568.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="196.0" stylesheets="@style/layout.css" text="Homeroom class" AnchorPane.topAnchor="568.0">
+                           <styleClass>
+                              <String fx:value="radius" />
+                              <String fx:value="button-with-shadow-surround-yellow" />
+                           </styleClass>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Line endX="150.0" layoutX="87.0" layoutY="208.0" startX="-100.0" AnchorPane.bottomAnchor="458.0" AnchorPane.leftAnchor="-13.5" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="207.5" />
+                        <Label layoutX="12.0" layoutY="140.0" text="ID:" />
+                        <Label layoutX="12.0" layoutY="170.0" text="School:" />
+                        <Label layoutX="37.0" layoutY="135.0" text="0001">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="63.0" layoutY="165.0" text="IT">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="21.0" layoutY="455.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="196.0" stylesheets="@style/layout.css" text="View all course class">
+                           <styleClass>
+                              <String fx:value="radius" />
+                              <String fx:value="button-with-shadow-surround-yellow" />
+                           </styleClass>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <stylesheets>
+                        <URL value="@style/layout.css" />
+                        <URL value="@style/button.css" />
+                     </stylesheets>
+                     <styleClass>
+                        <String fx:value="body" />
+                        <String fx:value="shadow" />
+                        <String fx:value="radius" />
+                     </styleClass>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane prefHeight="667.0" prefWidth="762.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="7.0" layoutY="65.0" prefHeight="600.0" prefWidth="745.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0">
+                                 <content>
+                                    <AnchorPane prefHeight="600.0" prefWidth="745.0">
+                                       <children>
+                                          <TableView prefHeight="595.0" prefWidth="730.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0">
+                                             <columns>
+                                                <TableColumn prefWidth="75.0" text="Nol." />
+                                                <TableColumn prefWidth="75.0" text="Course" />
+                                                <TableColumn prefWidth="75.0" text="Time" />
+                                                <TableColumn prefWidth="75.0" text="Number of students" />
+                                                <TableColumn prefWidth="75.0" text="Location" />
+                                             </columns>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                              <TextField layoutX="70.0" layoutY="23.0" promptText="Enter semester" AnchorPane.leftAnchor="70.0" />
+                              <Button layoutX="25.0" layoutY="18.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                 <stylesheets>
+                                    <URL value="@style/button.css" />
+                                    <URL value="@style/layout.css" />
+                                 </stylesheets>
+                                 <graphic>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/search.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="radius" />
+                                    <String fx:value="button-with-shadow-surround-yellow" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="667.0" prefWidth="762.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ScrollPane fitToHeight="true" fitToWidth="true" layoutX="9.0" layoutY="73.0" prefHeight="580.0" prefWidth="745.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="73.0">
+                                 <content>
+                                    <AnchorPane prefHeight="600.0" prefWidth="745.0">
+                                       <children>
+                                          <TableView prefHeight="595.0" prefWidth="730.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0">
+                                             <columns>
+                                                <TableColumn prefWidth="75.0" text="Nol." />
+                                                <TableColumn prefWidth="75.0" text="Course" />
+                                                <TableColumn prefWidth="75.0" text="Class ID" />
+                                                <TableColumn prefWidth="75.0" text="Semester" />
+                                                <TableColumn prefWidth="75.0" text="Status" />
+                                             </columns>
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                              <TextField layoutX="70.0" layoutY="23.0" promptText="Search" />
+                              <Button layoutX="25.0" layoutY="18.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                 <stylesheets>
+                                    <URL value="@style/button.css" />
+                                    <URL value="@style/layout.css" />
+                                 </stylesheets>
+                                 <graphic>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../img/search.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <styleClass>
+                                    <String fx:value="radius" />
+                                    <String fx:value="button-with-shadow-surround-yellow" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="667.0" prefWidth="762.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <BorderPane prefHeight="667.0" prefWidth="762.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <top>
+                                    <AnchorPane prefHeight="188.0" prefWidth="762.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Label layoutX="304.0" layoutY="14.0" styleClass="gradient_blue" stylesheets="@style/text.css" text="Class info:">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="32.0" layoutY="106.0" styleClass="gradient_blue" stylesheets="@style/text.css" text="Headmaster:">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="32.0" layoutY="141.0" styleClass="gradient_blue" stylesheets="@style/text.css" text="Monitor:">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="156.0" layoutY="106.0" styleClass="gradient_blue" stylesheets="@style/text.css" text="Name1">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="132.0" layoutY="141.0" styleClass="gradient_blue" stylesheets="@style/text.css" text="Name2">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="32.0" layoutY="67.0" styleClass="gradient_blue" stylesheets="@style/text.css" text="Class Name:">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="148.0" layoutY="67.0" styleClass="gradient_blue" stylesheets="@style/text.css" text="Name0">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="684.0" layoutY="10.0" styleClass="white" stylesheets="@style/text.css" text="ClassID">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <stylesheets>
+                                          <URL value="@style/layout.css" />
+                                          <URL value="@style/button.css" />
+                                       </stylesheets>
+                                       <styleClass>
+                                          <String fx:value="shadow" />
+                                          <String fx:value="radius" />
+                                          <String fx:value="body-v2" />
+                                       </styleClass>
+                                    </AnchorPane>
+                                 </top>
+                                 <center>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <AnchorPane layoutX="52.0" layoutY="14.0" prefHeight="479.0" prefWidth="785.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <styleClass>
+                                                <String fx:value="white-bg" />
+                                                <String fx:value="radius" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                             <stylesheets>
+                                                <URL value="@style/layout.css" />
+                                                <URL value="@style/button.css" />
+                                             </stylesheets>
+                                             <children>
+                                                <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="600.0" prefWidth="734.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="0.0">
+                                                   <content>
+                                                      <AnchorPane prefHeight="600.0" prefWidth="745.0" style="-fx-background-color: #ffff;" stylesheets="@style/layout.css">
+                                                         <children>
+                                                            <TableView layoutX="3.0" layoutY="22.0" prefHeight="571.0" prefWidth="736.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="22.0">
+                                                               <columns>
+                                                                  <TableColumn prefWidth="61.0" text="Nol." />
+                                                                  <TableColumn prefWidth="168.0" text="Student name" />
+                                                                  <TableColumn prefWidth="144.0" text="ID" />
+                                                                  <TableColumn prefWidth="132.0" text="Phone number" />
+                                                                  <TableColumn prefWidth="215.0" text="Email" />
+                                                               </columns>
+                                                               <columnResizePolicy>
+                                                                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                               </columnResizePolicy>
+                                                            </TableView>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </ScrollPane>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </center>
+                              </BorderPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

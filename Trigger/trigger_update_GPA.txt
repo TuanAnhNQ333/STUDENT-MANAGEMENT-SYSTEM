@@ -1,0 +1,62 @@
+-- thêm cột GPA cho sinh viên
+
+
+ALTER TABLE "Student"
+ADD COLUMN "GPA" numeric(4,2);
+
+
+-- Update dữ liệu có sẵn:
+
+
+UPDATE "Student" s
+SET "GPA" = COALESCE(ROUND(g."calculated_gpa"::numeric, 2), 0)
+FROM (
+  SELECT 
+    r."StudentID",
+    SUM(r."FinalScore" * c."Credits") / NULLIF(SUM(c."Credits"), 0) AS calculated_gpa
+  FROM "Register" r
+  JOIN "Course" c ON r."CourseID" = c."CourseID"
+  WHERE r."FinalScore" IS NOT NULL
+  GROUP BY r."StudentID"
+) g
+WHERE s."StudentID" = g."StudentID";
+
+
+-- tạo function cho trigger:
+
+
+CREATE OR REPLACE FUNCTION update_gpa()
+RETURNS TRIGGER AS $$
+BEGIN
+  UPDATE "Student" s
+  SET "GPA" = COALESCE(ROUND(g.calculated_gpa::numeric, 2), 0)
+  FROM (
+    SELECT 
+      r."StudentID",
+      SUM(r."FinalScore" * c."Credits") / NULLIF(SUM(c."Credits"), 0) AS calculated_gpa
+    FROM "Register" r
+    JOIN "Course" c ON r."CourseID" = c."CourseID"
+    WHERE r."FinalScore" IS NOT NULL
+      AND r."StudentID" = NEW."StudentID"
+    GROUP BY r."StudentID"
+  ) g
+  WHERE s."StudentID" = g."StudentID";
+
+  RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+
+-- Tạo trigger:
+
+
+CREATE TRIGGER trg_update_gpa
+AFTER INSERT OR UPDATE ON "Register"
+FOR EACH ROW
+EXECUTE FUNCTION update_gpa();
+
+
+--Gọi thử:
+
+
+SELECT "StudentID", "GPA" FROM "Student" ORDER BY "StudentID";

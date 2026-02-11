@@ -1,0 +1,76 @@
+-- Update dữ liệu từ trước:
+
+
+UPDATE "StudentClass" sc
+SET "NumberOfStudents" = sub.count
+FROM (
+  SELECT "StudentClassID", COUNT(*) AS count
+  FROM "Student"
+  GROUP BY "StudentClassID"
+) sub
+WHERE sc."StudentClassID" = sub."StudentClassID";
+
+
+--Tạo function cho trigger:
+
+
+CREATE OR REPLACE FUNCTION update_student_count()
+RETURNS TRIGGER AS $$
+BEGIN
+  -- Trường hợp thêm mới sinh viên
+  IF (TG_OP = 'INSERT') THEN
+    UPDATE "StudentClass"
+    SET "NumberOfStudents" = (
+      SELECT COUNT(*) FROM "Student"
+      WHERE "StudentClassID" = NEW."StudentClassID"
+    )
+    WHERE "StudentClassID" = NEW."StudentClassID";
+    
+    RETURN NEW;
+    
+  -- Trường hợp xóa sinh viên
+  ELSIF (TG_OP = 'DELETE') THEN
+    UPDATE "StudentClass"
+    SET "NumberOfStudents" = (
+      SELECT COUNT(*) FROM "Student"
+      WHERE "StudentClassID" = OLD."StudentClassID"
+    )
+    WHERE "StudentClassID" = OLD."StudentClassID";
+    
+    RETURN OLD;
+    
+  -- Trường hợp cập nhật sinh viên chuyển lớp
+  ELSIF (TG_OP = 'UPDATE') THEN
+    IF NEW."StudentClassID" IS DISTINCT FROM OLD."StudentClassID" THEN
+      -- Cập nhật lớp cũ
+      UPDATE "StudentClass"
+      SET "NumberOfStudents" = (
+        SELECT COUNT(*) FROM "Student"
+        WHERE "StudentClassID" = OLD."StudentClassID"
+      )
+      WHERE "StudentClassID" = OLD."StudentClassID";
+      
+      -- Cập nhật lớp mới
+      UPDATE "StudentClass"
+      SET "NumberOfStudents" = (
+        SELECT COUNT(*) FROM "Student"
+        WHERE "StudentClassID" = NEW."StudentClassID"
+      )
+      WHERE "StudentClassID" = NEW."StudentClassID";
+    END IF;
+
+    RETURN NEW;
+  END IF;
+
+  RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+
+--Tạo trigger:
+
+
+CREATE TRIGGER trigger_update_student_count
+AFTER INSERT OR UPDATE OR DELETE ON "Student"
+FOR EACH ROW
+EXECUTE FUNCTION update_student_count();

@@ -1,0 +1,68 @@
+-- Thêm cột CPA cho sinh viên:
+
+
+ALTER TABLE "Student"
+ADD COLUMN "CPA" numeric(4,2);
+
+
+--Update dữ liệu từ trước:
+
+
+UPDATE "Student" s
+SET "CPA" = sub.cpa
+FROM (
+    SELECT 
+        r."StudentID",
+        ROUND(
+            SUM(((r."MidtermScore" + r."FinalScore") / 2) * c."Credits")::numeric
+            / NULLIF(SUM(c."Credits"), 0)::numeric, 
+            2
+        ) AS cpa
+    FROM "Register" r
+    JOIN "Course" c ON r."CourseID" = c."CourseID"
+    WHERE r."MidtermScore" IS NOT NULL AND r."FinalScore" IS NOT NULL
+    GROUP BY r."StudentID"
+) AS sub
+WHERE s."StudentID" = sub."StudentID";
+
+
+-- tạo function cho trigger:
+
+
+CREATE OR REPLACE FUNCTION update_cpa()
+RETURNS TRIGGER AS $$
+BEGIN
+  UPDATE "Student" s
+  SET "CPA" = COALESCE(ROUND(g.calculated_cpa::numeric, 2), 0)
+  FROM (
+    SELECT 
+      r."StudentID",
+      SUM(r."FinalScore" * c."Credits") / NULLIF(SUM(c."Credits"), 0) AS calculated_cpa
+    FROM "Register" r
+    JOIN "Course" c ON r."CourseID" = c."CourseID"
+    WHERE r."FinalScore" IS NOT NULL
+      AND r."StudentID" = NEW."StudentID"
+    GROUP BY r."StudentID"
+  ) g
+  WHERE s."StudentID" = g."StudentID";
+
+  RETURN NULL;
+END;
+$$ LANGUAGE plpgsql;
+
+
+--Tạo trigger:
+
+
+CREATE TRIGGER trg_update_cpa
+AFTER INSERT OR UPDATE ON "Register"
+FOR EACH ROW
+EXECUTE FUNCTION update_cpa();
+
+
+-- Kiểm tra:
+
+
+SELECT "StudentID", "GPA", "CPA"
+FROM "Student"
+ORDER BY "StudentID";

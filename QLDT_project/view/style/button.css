@@ -1,0 +1,61 @@
+.button {
+  -fx-text-fill: linear-gradient(to right, #3d0000, #752a2a);
+  -fx-font-weight: bold;
+  -fx-font-size: 18px;
+  -fx-background-color: linear-gradient(to right, #e9b414, #e4c465);
+}
+
+.button:hover {
+  -fx-text-fill: linear-gradient(to right, #3d0000, #752a2a);
+  -fx-font-weight: bold;
+  -fx-font-size: 18px;
+  -fx-background-color: linear-gradient(to right, #e6ba38, #ebd8a1);
+}
+
+.shadow {
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 5, 0, 0, 0);
+}
+
+.register-button {
+  -fx-text-fill: #ffffff;
+  -fx-font-weight: bold;
+  -fx-background-color: linear-gradient(to right, #b61f28, rgb(218, 88, 101));
+}
+
+.register-button:hover {
+  -fx-background-color: linear-gradient(to right, #b3363e, rgb(218, 115, 126));
+  -fx-font-weight: bold;
+  -fx-text-fill: #ffffff;
+}
+
+.white-button {
+  -fx-text-fill: #ffffff;
+  -fx-background-color: #ffffff;
+}
+
+.white-button:hover {
+  -fx-background-color: #dbdbdb;
+  -fx-text-fill: #000000;
+}
+
+.button-with-shadow-surround-yellow {
+  -fx-effect: dropshadow(
+    gaussian,
+    rgba(174, 103, 9, 0.5),
+    /* tím nhạt từ #9178d1, 30% opacity */ 20,
+    /* radius */ 0.5,
+    /* spread */ 0,
+    /* offset-x */ 5 /* offset-y */
+  );
+}
+
+.button-with-shadow-surround-red {
+  -fx-effect: dropshadow(
+    gaussian,
+    rgba(174, 9, 9, 0.5),
+    /* tím nhạt từ #9178d1, 30% opacity */ 20,
+    /* radius */ 0.5,
+    /* spread */ 0,
+    /* offset-x */ 5 /* offset-y */
+  );
+}

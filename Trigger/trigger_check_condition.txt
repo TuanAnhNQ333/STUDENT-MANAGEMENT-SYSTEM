@@ -1,0 +1,50 @@
+--Tạo function cho trigger:
+
+
+CREATE OR REPLACE FUNCTION check_prerequisite()
+RETURNS TRIGGER AS $$
+DECLARE
+    prereq_id INT;
+    passed BOOLEAN;
+BEGIN
+    FOR prereq_id IN
+        SELECT "PreReqCourseID"
+        FROM "Condition"
+        WHERE "CourseID" = NEW."CourseID"
+    LOOP
+        SELECT EXISTS (
+            SELECT 1
+            FROM "Register"
+            WHERE "StudentID" = NEW."StudentID"
+              AND "CourseID" = prereq_id
+              AND COALESCE("FinalScore", 0) >= 5.0
+        ) INTO passed;
+
+        IF NOT passed THEN
+            RAISE EXCEPTION 'Không thể đăng ký học phần % vì chưa hoàn thành môn tiên quyết %!', NEW."CourseID", prereq_id;
+        END IF;
+    END LOOP;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+--Tạo trigger:
+
+
+DROP TRIGGER IF EXISTS trg_check_prereq ON "Register";
+
+CREATE TRIGGER trg_check_prereq
+BEFORE INSERT ON "Register"
+FOR EACH ROW
+EXECUTE FUNCTION check_prerequisite();
+
+
+--Update(Kiểm thử):
+
+
+
+UPDATE "Register"
+SET "StudentID" = "StudentID";
+
